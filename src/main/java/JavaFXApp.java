@@ -30,15 +30,15 @@ public class JavaFXApp extends Application {
     }
 
     protected int computeAdd (int number1, int number2) {
-        return number1 + number2;
+        return 0;
     }
 
     protected int computeMultiply (int number1, int number2) {
-        return number1 * number2;
+        return 0;
     }
 
     protected int computeDivide (int number1, int number2) {
-        return number1 / number2;
+        return 0;
     }
 
     private void compute (String operator) {
@@ -64,9 +64,19 @@ public class JavaFXApp extends Application {
         txtResult.setText (String.valueOf (result));
     }
 
-    EventHandler<MouseEvent> mouseHandler = mouseEvent -> compute (((Button) mouseEvent.getSource()).getText ());
+    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent> () {
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            compute (((Button) mouseEvent.getSource()).getText ());
+        }
+    };
 
-    EventHandler<KeyEvent> keyHandler = keyEvent -> compute(((Button) keyEvent.getSource ()).getText ());
+    EventHandler<KeyEvent> keyHandler = new EventHandler<KeyEvent> () {
+        @Override
+        public void handle (KeyEvent keyEvent) {
+            compute(((Button) keyEvent.getSource ()).getText ());
+        }
+    };
 
     /*
      * Er wordt een label toegevoegd aan het scherm.
@@ -115,7 +125,7 @@ public class JavaFXApp extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
 
         rootPane = new Pane();
         rootPane.setMinSize (500,205);
