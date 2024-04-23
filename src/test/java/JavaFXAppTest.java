@@ -13,4 +13,13 @@ class JavaFXAppTest {
     }
 
 
+    @Test
+    void computeMultiplyTest() {
+        JavaFXApp java = new JavaFXApp();
+
+        int result = java.computeMultiply(16, 16);
+        assertEquals(256,result);
+    }
+
+
 }
