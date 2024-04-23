@@ -6,7 +6,7 @@ class JavaFXAppTest {
     void computeAddTest() {
         AddComputation add = new AddComputation();
         int result = add.compute(16, 16);
-        assertEquals(256,result);
+        assertEquals(32,result);
     }
     @Test
     void computeMultiplyTest() {
@@ -16,8 +16,8 @@ class JavaFXAppTest {
     }
     @Test
     void computeDivideTest() {
-        JavaFXApp java = new JavaFXApp();
-        int result = java.computeDivide(16, 2);
-        assertEquals(8,result);
+        DivideComputation add = new DivideComputation();
+        int result = add.compute(16, 16);
+        assertEquals(1,result);
     }
 }
