@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class JavaFXAppTest {
     @Test
     void computeAddTest() {
-        JavaFXApp java = new JavaFXApp();
-        int result = java.computeAdd(4, 4);
-        assertEquals(8,result);
+        AddComputation add = new AddComputation();
+        int result = add.compute(16, 16);
+        assertEquals(256,result);
     }
     @Test
     void computeMultiplyTest() {
