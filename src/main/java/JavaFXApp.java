@@ -17,6 +17,17 @@ import javafx.stage.Stage;
 
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
+interface IComputation {
+    int compute(int number1, int number2);
+}
+
+class AddComputation implements IComputation {
+    @Override
+    public int compute(int number1, int number2) {
+        return number1 + number2;
+    }
+}
+
 
 public class JavaFXApp extends Application {
 
@@ -33,9 +44,6 @@ public class JavaFXApp extends Application {
         return Integer.parseInt (textField.getText ());
     }
 
-    protected int computeAdd (int number1, int number2) {
-        return number1 + number2;
-    }
 
     protected int computeMultiply (int number1, int number2) {
         return number1 * number2;
@@ -45,27 +53,29 @@ public class JavaFXApp extends Application {
         return number1 / number2;
     }
 
-    private void compute (String operator) {
-
+    private void compute(String operator) {
         int result;
-        int number1 = getNumberFromTextField (txtNumber1);
-        int number2 = getNumberFromTextField (txtNumber2);
+        int number1 = getNumberFromTextField(txtNumber1);
+        int number2 = getNumberFromTextField(txtNumber2);
+
+        IComputation computation;
 
         switch (operator) {
             case PLUS:
-                result = computeAdd (number1, number2);
+                computation = new AddComputation();
                 break;
             case MULTIPLY:
-                result = computeMultiply (number1, number2);
+                computation = new MultiplyComputation();
                 break;
             case DIVIDE:
-                result = computeDivide (number1, number2);
+                computation = new DivideComputation();
                 break;
             default:
-                result = 0;
+                throw new IllegalArgumentException("Invalid operator: " + operator);
         }
 
-        txtResult.setText (String.valueOf (result));
+        result = computation.compute(number1, number2);
+        txtResult.setText(String.valueOf(result));
     }
 
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent> () {
