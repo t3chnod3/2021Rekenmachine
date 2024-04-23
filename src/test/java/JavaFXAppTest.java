@@ -10,8 +10,8 @@ class JavaFXAppTest {
     }
     @Test
     void computeMultiplyTest() {
-        JavaFXApp java = new JavaFXApp();
-        int result = java.computeMultiply(16, 16);
+        MultiplyComputation multi = new MultiplyComputation();
+        int result = multi.compute(16, 16);
         assertEquals(256,result);
     }
     @Test
