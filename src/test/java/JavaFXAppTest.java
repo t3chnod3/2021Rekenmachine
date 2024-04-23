@@ -16,8 +16,8 @@ class JavaFXAppTest {
     }
     @Test
     void computeDivideTest() {
-        DivideComputation add = new DivideComputation();
-        int result = add.compute(16, 16);
+        DivideComputation div = new DivideComputation();
+        int result = div.compute(16, 16);
         assertEquals(1,result);
     }
 }
